@@ -16,16 +16,8 @@ namespace SeleniumAutomation.PageObjects.Demoga
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-        [FindsBy(How = How.LinkText, Using = "TheTechie AutomationLabs")]
-        public IWebElement ChannelNameLinkText { get; set; }
 
         const string formsUrl = "https://demoqa.com/forms/";
-
-        //public ChannelPage NavigateToChannel()
-        //{
-        //    ChannelNameLinkText.Click();
-        //    return new ChannelPage(driver);
-        //}
 
         public FormsPage NavigateToForms()
         {

@@ -37,7 +37,7 @@ namespace SeleniumAutomation.TestScipts
 
             practiceForms.ValidateAndSubmitEmptyForm();
 
-            //Assert.AreEqual("Thanks for submitting the form", practiceForms.GetSuccessMessage());
+            Assert.AreEqual("Thanks for submitting the form", practiceForms.GetSuccessMessage());
         }
     }
 }
