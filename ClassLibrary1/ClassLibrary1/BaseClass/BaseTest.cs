@@ -13,6 +13,7 @@ namespace SeleniumAutomation.BaseClass
     {
         public IWebDriver driver;
 
+
         [SetUp]
         public void Open()
         {

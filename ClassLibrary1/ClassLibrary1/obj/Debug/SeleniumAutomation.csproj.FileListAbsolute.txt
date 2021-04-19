@@ -15,3 +15,4 @@ E:\10Pearls\DemogaWebAutomation\ClassLibrary1\ClassLibrary1\obj\Debug\SeleniumAu
 E:\10Pearls\DemogaWebAutomation\ClassLibrary1\ClassLibrary1\obj\Debug\SeleniumAutomation.csproj.CopyComplete
 E:\10Pearls\DemogaWebAutomation\ClassLibrary1\ClassLibrary1\obj\Debug\SeleniumAutomation.dll
 E:\10Pearls\DemogaWebAutomation\ClassLibrary1\ClassLibrary1\obj\Debug\SeleniumAutomation.pdb
+E:\10Pearls\DemogaWebAutomation\ClassLibrary1\ClassLibrary1\obj\Debug\SeleniumAutomation.csprojAssemblyReference.cache

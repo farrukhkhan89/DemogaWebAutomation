@@ -28,6 +28,12 @@ namespace SeleniumAutomation.PageObjects.Demoga
         [FindsBy(How = How.Id, Using = "gender-radio-1")]
         public IWebElement GenderMale { get; set; }
 
+        [FindsBy(How = How.Id, Using = "gender-radio-2")]
+        public IWebElement GenderFemale { get; set; }
+
+        [FindsBy(How = How.Id, Using = "gender-radio-3")]
+        public IWebElement GenderOther { get; set; }
+
         [FindsBy(How = How.Id, Using = "submit")]
         public IWebElement SubmitButton { get; set; }
 
@@ -40,18 +46,50 @@ namespace SeleniumAutomation.PageObjects.Demoga
         [FindsBy(How = How.Name, Using = "gender")]
         public IWebElement Gender { get; set; }
 
+        public void SetFirstName(string firstName)
+        {
+            FirstName.Clear();
+            FirstName.SendKeys(firstName);
+        }
+        public void SetLastName(string lastName)
+        {
+            LastName.Clear();
+            LastName.SendKeys(lastName);
+        }
 
+        public void SetMobileNumber(string mobileNumber)
+        {
+            MobileNumber.Clear();
+            MobileNumber.SendKeys(mobileNumber);
+        }
+        public void SetGender(string gender)
+        {
+            //Gender.Clear();
+            switch (gender) 
+            {
+                case "male":
+                    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].checked = true;", GenderMale);
+                    break;
+
+                case "female":
+                    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].checked = true;", GenderFemale);
+                    break;
+
+                default:
+                    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].checked = true;", GenderOther);
+                    break;
+            }
+
+           
+            Gender.SendKeys(gender);
+        }
         public string GetSuccessMessage()
         {
             return SuccessfullSubmissionMessage.Text;
         }
 
-        public void FillFormOnlyRequiredAndSubmit()
+        public void SubmitPracticeForm()
         {
-            FirstName.SendKeys("Farrukh");
-            LastName.SendKeys("Khan");
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].checked = true;", GenderMale);
-            MobileNumber.SendKeys("3132417761");
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", SubmitButton);
         }
 

@@ -17,9 +17,7 @@ namespace SeleniumAutomation.PageObjects.Demoga
             PageFactory.InitElements(driver, this);
         }
 
-        const string formsUrl = "https://demoqa.com/forms/";
-
-        public FormsPage NavigateToForms()
+        public FormsPage NavigateToForms(string formsUrl)
         {
             this.driver.Navigate().GoToUrl(formsUrl);
             return new FormsPage(driver);

@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClass\BaseTest.cs" />
+    <Compile Include="PageObjects\Demoga\DemogaHomePage.cs" />
     <Compile Include="PageObjects\Demoga\FormsPage.cs" />
     <Compile Include="PageObjects\Demoga\HomePage.cs" />
     <Compile Include="PageObjects\Demoga\PracticeForms.cs" />

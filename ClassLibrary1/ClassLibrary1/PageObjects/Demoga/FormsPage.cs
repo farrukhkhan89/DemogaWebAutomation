@@ -17,16 +17,12 @@ namespace SeleniumAutomation.PageObjects.Demoga
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-        [FindsBy(How = How.CssSelector, Using = "yt-formatted-string#text.style-scope.ytd-channel-name")]
-        public IWebElement ChannelName { get; set; }
-        public string GetChannelName()
-        {
-            return ChannelName.Text;
-        }
-
+        [FindsBy(How = How.XPath, Using = "//div[@class='element-list collapse show']//*[name()='svg'][@stroke = 'currentColor']")]
+        public IWebElement PracticeButton { get; set; }
+        
         public PracticeForms ClickToToPracticeForms()
         {
-            this.driver.Navigate().GoToUrl(practiceFormsUrl);
+            PracticeButton.Click();
             return new PracticeForms(driver);
         }
     }
