@@ -65,7 +65,7 @@ namespace SeleniumAutomation.PageObjects.Demoga
         public void SetGender(string gender)
         {
             //Gender.Clear();
-            switch (gender) 
+            switch (gender)
             {
                 case "male":
                     ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].checked = true;", GenderMale);
@@ -80,7 +80,7 @@ namespace SeleniumAutomation.PageObjects.Demoga
                     break;
             }
 
-           
+
             Gender.SendKeys(gender);
         }
         public string GetSuccessMessage()
@@ -91,11 +91,29 @@ namespace SeleniumAutomation.PageObjects.Demoga
         public void SubmitPracticeForm()
         {
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", SubmitButton);
+            bool checkFirstName=IsAttribtuePresent(FirstName, "required");
         }
 
         public void ValidateAndSubmitEmptyForm()
         {
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", SubmitButton);
+            IsAttribtuePresent(FirstName, "required");
+        }
+
+        //
+        public bool IsAttribtuePresent(IWebElement element, String attribute)
+        {
+            Boolean result = false;
+            try
+            {
+                String value = element.GetAttribute(attribute);
+                if (value != null)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception e) { }
+            return result;
         }
     }
 }

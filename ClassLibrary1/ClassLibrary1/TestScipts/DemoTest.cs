@@ -34,23 +34,19 @@ namespace SeleniumAutomation.TestScipts
         [Test]
         public void Check_SubmitEmptyFormsAndValidate()
         {
+            bool isGenderSelected = false;
             var homePage = new HomePage(driver);
             var formsPage = homePage.NavigateToForms(formsUrl);
             var practiceForms = formsPage.ClickToToPracticeForms();
 
-            practiceForms.SetFirstName("Farrukh");
-            practiceForms.SetLastName("Khan");
-            practiceForms.SetMobileNumber("3132417761");
-            practiceForms.SetGender("male");
-
-
-            Assert.True(!string.IsNullOrEmpty(practiceForms.FirstName.GetAttribute("value")), "first name is required field");
-            Assert.True(!string.IsNullOrEmpty(practiceForms.LastName.GetAttribute("value")), "last name is required field");
-            Assert.True(!practiceForms.Gender.Selected, "Gender is required field");
-
             practiceForms.ValidateAndSubmitEmptyForm();
 
-            Assert.AreEqual("Thanks for submitting the form", practiceForms.GetSuccessMessage());
+            Assert.AreEqual(true, practiceForms.IsAttribtuePresent(practiceForms.FirstName, "required"));
+            Assert.AreEqual(true, practiceForms.IsAttribtuePresent(practiceForms.LastName, "required"));
+            Assert.AreEqual(true, practiceForms.IsAttribtuePresent(practiceForms.MobileNumber, "required"));
+
+            Assert.AreEqual(true, practiceForms.IsAttribtuePresent(practiceForms.Gender, "required"));
+
         }
     }
 }
