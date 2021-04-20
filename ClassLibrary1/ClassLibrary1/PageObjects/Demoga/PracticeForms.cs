@@ -1,10 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using SeleniumAutomation.PageObjectModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumAutomation.PageObjects.Demoga
 {
@@ -16,8 +13,6 @@ namespace SeleniumAutomation.PageObjects.Demoga
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-        [FindsBy(How = How.CssSelector, Using = "yt-formatted-string#text.style-scope.ytd-channel-name")]
-        public IWebElement ChannelName { get; set; }
 
         [FindsBy(How = How.Id, Using = "firstName")]
         public IWebElement FirstName { get; set; }
@@ -64,7 +59,6 @@ namespace SeleniumAutomation.PageObjects.Demoga
         }
         public void SetGender(string gender)
         {
-            //Gender.Clear();
             switch (gender)
             {
                 case "male":
@@ -88,14 +82,18 @@ namespace SeleniumAutomation.PageObjects.Demoga
             return SuccessfullSubmissionMessage.Text;
         }
 
-        public void SubmitPracticeForm()
+        public void SubmitPracticeForm(RequiredFieldsModel model)
         {
+            SetFirstName(model.FirstName);
+            SetLastName(model.LastName);
+            SetMobileNumber(model.MobileNumber);
+            SetGender(model.Gender);
             this.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", SubmitButton);
 
         }
 
-        public void ValidateAndSubmitEmptyForm()
+        public void SubmitEmptyForm()
         {
             this.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", SubmitButton);
@@ -104,16 +102,12 @@ namespace SeleniumAutomation.PageObjects.Demoga
         //
         public bool IsAttribtuePresent(IWebElement element, String attribute)
         {
-            Boolean result = false;
-            try
+            bool result = false;
+            string value = element.GetAttribute(attribute);
+            if (value != null)
             {
-                String value = element.GetAttribute(attribute);
-                if (value != null)
-                {
-                    result = true;
-                }
+                result = true;
             }
-            catch (Exception e) { }
             return result;
         }
     }
