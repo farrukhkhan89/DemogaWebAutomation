@@ -23,6 +23,7 @@ namespace SeleniumAutomation.PageObjects.Demoga
         public PracticeForms ClickToToPracticeForms()
         {
             PracticeButton.Click();
+            this.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             return new PracticeForms(driver);
         }
     }

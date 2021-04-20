@@ -28,6 +28,7 @@ namespace SeleniumAutomation.TestScipts
 
             practiceForms.SubmitPracticeForm();
 
+            this.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             Assert.AreEqual("Thanks for submitting the form", practiceForms.GetSuccessMessage());
         }
 
@@ -38,6 +39,7 @@ namespace SeleniumAutomation.TestScipts
             var homePage = new HomePage(driver);
             var formsPage = homePage.NavigateToForms(formsUrl);
             var practiceForms = formsPage.ClickToToPracticeForms();
+
 
             practiceForms.ValidateAndSubmitEmptyForm();
 

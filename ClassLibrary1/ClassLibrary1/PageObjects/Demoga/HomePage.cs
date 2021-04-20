@@ -19,7 +19,7 @@ namespace SeleniumAutomation.PageObjects.Demoga
 
         public FormsPage NavigateToForms(string formsUrl)
         {
-            this.driver.Navigate().GoToUrl(formsUrl);
+            this.driver.Navigate().GoToUrl(formsUrl);           
             return new FormsPage(driver);
         }
     }

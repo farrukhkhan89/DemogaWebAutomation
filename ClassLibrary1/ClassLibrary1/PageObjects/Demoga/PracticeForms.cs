@@ -90,14 +90,15 @@ namespace SeleniumAutomation.PageObjects.Demoga
 
         public void SubmitPracticeForm()
         {
+            this.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", SubmitButton);
-            bool checkFirstName=IsAttribtuePresent(FirstName, "required");
+
         }
 
         public void ValidateAndSubmitEmptyForm()
         {
+            this.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", SubmitButton);
-            IsAttribtuePresent(FirstName, "required");
         }
 
         //
