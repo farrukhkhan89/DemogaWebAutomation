@@ -79,6 +79,7 @@ namespace SeleniumAutomation.PageObjects.Demoga
         }
         public string GetSuccessMessage()
         {
+            this.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             return SuccessfullSubmissionMessage.Text;
         }
 
